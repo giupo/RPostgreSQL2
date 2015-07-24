@@ -3,7 +3,6 @@
 #' @name dbBegin
 #' @seealso dbBeginTransaction
 #' @import RPostgreSQL
-#' @export
 
 .dbBegin <- function(conn) {
   dbGetQuery(conn, "START TRANSACTION")
