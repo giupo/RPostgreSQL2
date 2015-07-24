@@ -1,0 +1,8 @@
+Package: RPostgreSQL2
+Title: Adds some features to RPostgreSQL
+Version: 0.0.1
+Authors@R: person("Giuseppe", "Acito", email = "giuseppe.acito@gmail.com", role = c("aut", "cre"))
+Description: It just adds PreparedStatements to RPostgreSQL original package
+Depends: R (>= 3.2.1)   
+License: What MIT + file LICENSE
+LazyData: true
