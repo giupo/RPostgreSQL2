@@ -9,7 +9,7 @@ R_FILES := $(wildcard R/*.[R|r])
 SRC_FILES := $(wildcard src/*) $(addprefix src/, $(COPY_SRC))
 PKG_FILES := DESCRIPTION NAMESPACE $(R_FILES) $(SRC_FILES)
  
-.PHONY: tarball install check clean build
+.PHONY: tarball install check clean build NAMESPACE
  
 tarball: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 $(PKG_NAME)_$(PKG_VERSION).tar.gz: $(PKG_FILES)
@@ -25,7 +25,7 @@ install: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 	R CMD INSTALL $(PKG_NAME)_$(PKG_VERSION).tar.gz
  
 NAMESPACE: $(R_FILES)
-	Rscript -e "library(devtools);load_all();document()"
+	Rscript -e "library(roxygen2);roxygenize('.')"
 
 clean:
 	-rm -f $(PKG_NAME)_*.tar.gz
