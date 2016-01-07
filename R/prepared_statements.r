@@ -12,7 +12,7 @@
 
 .dbGetPreparedQuery <- function(conn, statement, bind.data, ...) {
   ret <- data.frame()
-  params <- as.list(...)
+  params <- list(...)
 
   prefix <- if("prefix" %in% names(params)) {
     params$prefix
