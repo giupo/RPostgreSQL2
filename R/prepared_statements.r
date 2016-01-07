@@ -70,7 +70,7 @@
 
 tryCatch(
   setMethod(
-    "dbBegin",
+    "dbGetPreparedQuery",
     signature("PostgreSQLConnection", "character", "ANY"),
     .dbGetPreparedQuery),
   error=function(err) {
