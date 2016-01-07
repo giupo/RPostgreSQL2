@@ -68,6 +68,12 @@
   ret
 }
 
+#' Prepared Statements  for PostgreSQL
+#'
+#' @exportMethod dbGetPreparedQuery
+#' @export dbGetPreparedQuery
+#' @note R ti odio.
+
 tryCatch(
   setMethod(
     "dbGetPreparedQuery",
