@@ -12,6 +12,14 @@
 
 .dbGetPreparedQuery <- function(conn, statement, bind.data, ...) {
   ret <- data.frame()
+  params <- as.list(...)
+
+  prefix <- if("prefix" %in% names(params)) {
+    params$prefix
+  } else {
+    "p"
+  }
+  
   if(is.vector(bind.data) || is.list(bind.data) || is.matrix(bind.data)) {
     bind.data <- as.data.frame(bind.data)
   }
@@ -19,8 +27,10 @@
   if(!is.data.frame(bind.data)) {
     stop("bind.data should be a vector, matrix, list or data.frame")
   }
+
   
-  pstatement_name <- paste0("p",digest(
+  
+  pstatement_name <- paste0(prefix, digest(
     statement, algo='md5', serialize = FALSE))
   
   count_params <- str_count(statement, "\\?")
@@ -70,9 +80,10 @@
 
 #' Prepared Statements  for PostgreSQL
 #'
+#' @name dbGetPreparedQuery
 #' @exportMethod dbGetPreparedQuery
 #' @export dbGetPreparedQuery
-#' @note R ti odio.
+#' @note R ti odio
 
 tryCatch(
   setMethod(

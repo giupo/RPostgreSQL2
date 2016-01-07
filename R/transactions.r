@@ -1,14 +1,20 @@
 #' Adds implementation of DBI::dbBegin for RPostgreSQL
 #'
-#' @name dbBegin
+#' @name .dbBegin
 #' @seealso dbBeginTransaction
+#' @rdname dbBegin-internal
 #' @importFrom RPostgreSQL dbGetQuery
-#' @export dbBegin
 
 .dbBegin <- function(conn) {
   dbGetQuery(conn, "START TRANSACTION")
   TRUE
 }
+
+#' Adds implementation of DBI::dbBegin for RPostgreSQL
+#'
+#' @name dbBegin
+#' @seealso dbBeginTransaction
+#' @exportMethod dbBegin
 
 tryCatch(
   setMethod("dbBegin", signature("PostgreSQLConnection"), .dbBegin),
