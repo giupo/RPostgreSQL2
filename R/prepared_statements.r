@@ -91,9 +91,12 @@ tryCatch(
     signature("PostgreSQLConnection", "character", "ANY"),
     .dbGetPreparedQuery),
   error=function(err) {
+    message("No Generico for dbGetPreparedQuery, making it now")
+
     setGeneric("dbGetPreparedQuery", function(conn, statement, bind.data, ...) {
       standardGeneric("dbGetPreparedQuery")
     })
+    
     setMethod(
       "dbGetPreparedQuery",
       signature("PostgreSQLConnection", "character", "ANY"),
