@@ -3,8 +3,7 @@ Title: Adds some features to RPostgreSQL
 Version: 0.1.4
 Authors@R: person("Giuseppe", "Acito", email = "giuseppe.acito@gmail.com", role = c("aut", "cre"))
 Description: It just adds PreparedStatements to RPostgreSQL original package
-Depends:
-   R (>= 3.0.0),
+Imports:
    methods,
    RPostgreSQL
 License: What MIT + file LICENSE
